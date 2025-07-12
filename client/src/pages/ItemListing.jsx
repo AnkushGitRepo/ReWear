@@ -58,7 +58,7 @@ const [tags, setTags] = useState('');
     formData.append('tags', tags);
 
     for (let i = 0; i < productImages.length; i++) {
-      formData.append('files', productImages[i]);
+formData.append('files', productImages[i]); // make sure key matches what multer expects
     }
 
     try {
