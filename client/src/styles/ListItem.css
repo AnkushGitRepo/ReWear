@@ -1,0 +1,76 @@
+/* General List Item Styles */
+.list-item {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.list-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Content within the list item */
+.list-item-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.list-item-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.list-item-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-item-title {
+  font-weight: 600;
+  color: #333;
+  font-size: 1rem;
+}
+
+.list-item-subtitle {
+  color: #666;
+  font-size: 0.875rem;
+}
+
+/* Actions/buttons within the list item */
+.list-item-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.list-item-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background-color 0.2s ease;
+}
+
+.list-item-button:hover {
+  background-color: #0056b3;
+}
+
+.list-item-button.delete {
+  background-color: #dc3545;
+}
+
+.list-item-button.delete:hover {
+  background-color: #c82333;
+}

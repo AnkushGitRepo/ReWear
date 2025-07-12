@@ -2,12 +2,10 @@ import React, { useContext, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import StockDashboard from "./pages/StockDashboard";
 import Auth from "./pages/Auth";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import OtpVerification from "./pages/OtpVerification";
-import Stocks from "./pages/Stocks";
 import Markets from "./pages/Markets";
 import Currencies from "./pages/Currencies";
 import Global from "./pages/Global";
@@ -51,8 +49,8 @@ const App = () => {
           <Route path="/password/reset/:token" element={<ResetPassword />} />
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
-            <Route path="/stock-dashboard" element={<StockDashboard />} />
-            <Route path="/stocks" element={<Stocks />} />
+            
+            
             <Route path="/markets" element={<Markets />} />
             <Route path="/currencies" element={<Currencies />} />
             <Route path="/global" element={<Global />} />

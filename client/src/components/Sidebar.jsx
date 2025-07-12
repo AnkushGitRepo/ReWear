@@ -16,7 +16,7 @@ export function Sidebar({ isCollapsed, onToggle }) {
 
   const mainNavItems = [
     { title: 'Dashboard', icon: Home, href: '/' },
-    { title: 'Stocks', icon: BarChart, href: '/stocks' },
+    
     { title: 'Markets', icon: BarChart3, href: '/markets' },
     { title: 'Currencies', icon: DollarSign, href: '/currencies' },
     { title: 'Global', icon: Globe, href: '/global' },
