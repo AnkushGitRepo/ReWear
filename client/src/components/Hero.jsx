@@ -12,6 +12,7 @@ import "../styles/Hero.css";
 import { Context } from "../main";
 import Hero1 from "../assets/hero-1.jpg";
 import Hero2 from "../assets/hero-2.jpg";
+import Hero3 from '../assets/hero-3.jpg'
 
 const Hero = () => {
   const { user } = useContext(Context);
@@ -35,7 +36,7 @@ const Hero = () => {
       title: "Browse Categories",
       description: "Find items by category – easy and quick.",
       buttonLabel: "Browse Categories",
-      image: "https://images.unsplash.com/photo-1603252110487-2b6b8f7444d3",
+      image: Hero3,
       path: "/categories",
     },
   ];
