@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import { PageLayout } from '../layout/PageLayout';
 import { Bell, Globe, Lock, User, Settings as SettingsIcon } from 'lucide-react';
-import Notification from '../components/Notification';
 import Security from '../components/Security';
 import '../styles/Settings.css';
 
@@ -43,10 +42,6 @@ const Settings = () => {
       setCity(data.user.city || '');
       setArea(data.user.area || '');
       setDob(data.user.dob ? new Date(data.user.dob).toISOString().split('T')[0] : '');
-      setIncomeLevel(data.user.incomeLevel || '');
-      setAadhaarPan(data.user.aadhaarPan || '');
-        setOccupation(data.user.occupation || '');
-        setDarkMode(data.user.darkMode || false);
     } catch (error) {
       console.error('Error fetching user details:', error);
     }
@@ -56,26 +51,6 @@ const Settings = () => {
     fetchUserDetails();
   }, []);
 
-  const incomeLevels = [
-    { value: '', label: 'Select Income Level' },
-    { value: '<100000', label: '< ₹1,00,000' },
-    { value: '100000-300000', label: '₹1,00,000 - ₹3,00,000' },
-    { value: '300000-500000', label: '₹3,00,000 - ₹5,00,000' },
-    { value: '500000-1000000', label: '₹5,00,000 - ₹10,00,000' },
-    { value: '1000000-2500000', label: '₹10,00,000 - ₹25,00,000' },
-    { value: '2500000-5000000', label: '₹25,00,000 - ₹50,00,000' },
-    { value: '>5000000', label: '> ₹50,00,000' },
-  ];
-
-  const occupations = [
-    { value: '', label: 'Select Occupation' },
-    { value: 'student', label: 'Student' },
-    { value: 'salaried', label: 'Salaried' },
-    { value: 'self-employed', label: 'Self-Employed' },
-    { value: 'business', label: 'Business' },
-    { value: 'retired', label: 'Retired' },
-    { value: 'other', label: 'Other' },
-  ];
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -155,10 +130,6 @@ const Settings = () => {
       formData.append('city', city);
       formData.append('area', area);
       formData.append('dob', dob);
-      formData.append('incomeLevel', incomeLevel);
-      formData.append('aadhaarPan', aadhaarPan);
-      formData.append('occupation', occupation);
-      formData.append('darkMode', darkMode);
       // Only append profile photo if it's changed
       if (profilePhoto) {
         formData.append('avatar', profilePhoto);
@@ -232,13 +203,6 @@ const Settings = () => {
               >
                 <User className="settings-nav-icon" />
                 Account
-              </button>
-              <button 
-                className={`settings-nav-button ${activeSection === 'notifications' ? 'active' : ''}`}
-                onClick={() => setActiveSection('notifications')}
-              >
-                <Bell className="settings-nav-icon" />
-                Notifications
               </button>
               <button 
                 className={`settings-nav-button ${activeSection === 'security' ? 'active' : ''}`}
@@ -344,20 +308,6 @@ const Settings = () => {
                       />
                     </div>
                     <div>
-                      <label className="settings-label">Occupation</label>
-                      <select 
-                        value={occupation}
-                        onChange={(e) => setOccupation(e.target.value)}
-                        className="settings-input" 
-                      >
-                        {occupations.map((option) => (
-                          <option key={option.value} value={option.value}>
-                            {option.label}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    <div>
                       <label className="settings-label">Address</label>
                       <input 
                         type="text" 
@@ -406,54 +356,10 @@ const Settings = () => {
                         className="settings-input" 
                       />
                     </div>
-                    <div>
-                      <label className="settings-label">Income Level</label>
-                      <select 
-                        value={incomeLevel}
-                        onChange={(e) => setIncomeLevel(e.target.value)}
-                        className="settings-input" 
-                      >
-                        {incomeLevels.map((option) => (
-                          <option key={option.value} value={option.value}>
-                            {option.label}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    <div>
-                      <label className="settings-label">Aadhaar/PAN Number</label>
-                      <input 
-                        type="text" 
-                        value={aadhaarPan}
-                        onChange={(e) => setAadhaarPan(e.target.value)}
-                        className="settings-input" 
-                        placeholder="Enter Aadhaar or PAN number"
-                      />
-                    </div>
                   </div>
                 </div>
 
-                {/* Display Settings Section */}
-                <div>
-                  <h3 className="settings-section-subtitle">Display Settings</h3>
-                  <div className="settings-display-space">
-                    <div className="settings-display-item">
-                      <div>
-                        <p className="settings-display-text-bold">Dark Mode</p>
-                        <p className="settings-display-text-muted">Switch between light and dark theme</p>
-                      </div>
-                      <label className="settings-toggle-switch">
-                        <input 
-                          type="checkbox" 
-                          className="settings-toggle-input" 
-                          checked={darkMode}
-                          onChange={(e) => setDarkMode(e.target.checked)}
-                        />
-                        <div className="settings-toggle-slider"></div>
-                      </label>
-                    </div>
-                  </div>
-                </div>
+                
 
                 {/* Action Buttons */}
                 <div className="settings-actions-top-border">
@@ -462,10 +368,6 @@ const Settings = () => {
                 </div>
               </div>
             </div>
-          )}
-
-          {activeSection === 'notifications' && (
-            <Notification />
           )}
 
           {activeSection === 'security' && (
