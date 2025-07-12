@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react";
 import "../styles/OtpVerification.css";
 import axios from "axios";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Context } from "../main";
 
 const OtpVerification = () => {
   const { isAuthenticated, setIsAuthenticated, setUser } = useContext(Context);
-  const { email, phone } = useParams();
+  const location = useLocation();
+  const { email, phone } = location.state || {};
   const [otp, setOtp] = useState(["", "", "", "", ""]);
 
   const handleChange = (value, index) => {
@@ -54,6 +55,10 @@ const OtpVerification = () => {
 
   if (isAuthenticated) {
     return <Navigate to={"/"} />;
+  }
+
+  if (!email && !phone) {
+    return <Navigate to={"/register"} />;
   }
 
   return (

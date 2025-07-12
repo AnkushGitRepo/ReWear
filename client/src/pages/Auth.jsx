@@ -16,19 +16,25 @@ const Auth = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const handleAuth = async (data) => {
-    const url = isLogin 
-      ? "http://localhost:4000/api/v1/user/login" 
-      : "http://localhost:4000/api/v1/user/register";
+      const url = isLogin 
+        ? "http://localhost:4000/api/v1/user/login" 
+        : "http://localhost:4000/api/v1/user/register";
 
-    try {
-      const res = await axios.post(url, data, {
+      const payload = isLogin ? data : { ...data, verificationMethod: "email" };
+
+      try {
+        const res = await axios.post(url, payload, {
         withCredentials: true,
         headers: { "Content-Type": "application/json" },
       });
       toast.success(res.data.message);
-      setIsAuthenticated(true);
-      setUser(res.data.user);
-      navigateTo("/");
+      if (isLogin) {
+        setIsAuthenticated(true);
+        setUser(res.data.user);
+        navigateTo("/");
+      } else {
+        navigateTo("/otp-verification", { state: { email: data.email, phone: data.phone } });
+      }
     } catch (error) {
       toast.error(error.response?.data?.message || "An unexpected error occurred.");
     }
@@ -55,7 +61,7 @@ const Auth = () => {
           {!isLogin && (
             <div className="input-group">
               <Phone className="input-icon" />
-              <input type="tel" placeholder="Phone Number" {...register("phone", { required: true })} />
+              <input type="tel" placeholder="Phone Number" {...register("phone")} />
             </div>
           )}
           

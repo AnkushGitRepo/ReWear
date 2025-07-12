@@ -45,10 +45,7 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/auth" element={<Auth />} />
-          <Route
-            path="/otp-verification/:email/:phone"
-            element={<OtpVerification />}
-          />
+          <Route path="/otp-verification" element={<OtpVerification />} />
           <Route path="/password/forgot" element={<ForgotPassword />} />
           <Route path="/password/reset/:token" element={<ResetPassword />} />
           <Route element={<Layout />}>

@@ -16,6 +16,7 @@ const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TO
 
 
 export const register = catchAsyncError(async (req, res, next) => {
+  
   try {
     const { name, email, phone, password, verificationMethod } = req.body;
     if (!name || !email || !phone || !password || !verificationMethod) {
@@ -54,13 +55,13 @@ export const register = catchAsyncError(async (req, res, next) => {
       ],
     });
 
-    if (registerationAttemptsByUser.length > 3) {
-      return next(
-          new ErrorHandler(
-              "You have exceeded the maximum number of attempts (3). Please try again after an hour.",
-              400
-          )
-      );
+    if (registerationAttemptsByUser.length > 0) {
+      await User.deleteMany({
+        $or: [
+          { phone, accountVerified: false },
+          { email, accountVerified: false },
+        ],
+      });
     }
 
     const userData = {
@@ -208,7 +209,6 @@ export const verifyOTP = catchAsyncError(async (req, res, next) => {
     const verificationCodeExpire = new Date(
         user.verificationCodeExpire
     ).getTime();
-    console.log(currentTime);
     console.log(verificationCodeExpire);
     if (currentTime > verificationCodeExpire) {
       return next(new ErrorHandler("OTP Expired.", 400));
