@@ -15,6 +15,7 @@ import axios from "axios";
 import { Context } from "./main";
 import UserDashboard from "./pages/UserDashboard";
 import ItemDetails from "./pages/ItemDetail"; // Adjust the path if your file is elsewhere
+import Profile from "./pages/Profile";
 const App = () => {
   const { setIsAuthenticated, setUser } = useContext(Context);
   const location = useLocation();

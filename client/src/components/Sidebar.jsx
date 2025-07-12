@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { 
-  Settings, ChevronRight, ChevronLeft, Home, LogIn, LogOut, PlusSquare
+  Settings, ChevronRight, ChevronLeft, Home, LogIn, LogOut, PlusSquare, User
 } from 'lucide-react';
 import '../styles/Sidebar.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -66,6 +66,15 @@ export function Sidebar({ isCollapsed, onToggle, isOpen, onClose }) {
 
       <div className="sidebar-bottom">
         <nav className="sidebar-nav settings-nav">
+          <Link
+            to={'/profile'}
+            className={`sidebar-link ${location.pathname === '/profile' ? 'active' : ''}`}>
+            <User className="sidebar-link-icon" />
+            <span className={`sidebar-link-text ${isCollapsed ? 'collapsed' : ''}`}>
+              Profile
+            </span>
+          </Link>
+
           <Link
             to={settingsItem.href}
             className={`sidebar-link ${location.pathname === settingsItem.href ? 'active' : ''}`}>
