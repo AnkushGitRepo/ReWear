@@ -1,7 +1,6 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { 
-  BarChart, PieChart, BarChart3, Wallet, LineChart, Globe, 
-  DollarSign, Settings, ChevronRight, ChevronLeft, Home, LogIn, LogOut, PlusSquare
+  Settings, ChevronRight, ChevronLeft, Home, LogIn, LogOut, PlusSquare
 } from 'lucide-react';
 import '../styles/Sidebar.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -9,20 +8,13 @@ import { Context } from '../main';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-export function Sidebar({ isCollapsed, onToggle }) {
+export function Sidebar({ isCollapsed, onToggle, isOpen, onClose }) {
   const location = useLocation();
   const navigateTo = useNavigate();
   const { isAuthenticated, setIsAuthenticated, setUser } = useContext(Context);
 
   const mainNavItems = [
     { title: 'Dashboard', icon: Home, href: '/' },
-    
-    { title: 'Markets', icon: BarChart3, href: '/markets' },
-    { title: 'Currencies', icon: DollarSign, href: '/currencies' },
-    { title: 'Global', icon: Globe, href: '/global' },
-    { title: 'Portfolio', icon: Wallet, href: '/portfolio' },
-    { title: 'Performance', icon: LineChart, href: '/performance' },
-    { title: 'Analysis', icon: PieChart, href: '/analysis' },
     { title: 'List Item', icon: PlusSquare, href: '/list-item' },
   ];
 
@@ -104,15 +96,6 @@ export function Sidebar({ isCollapsed, onToggle }) {
           )}
         </nav>
 
-        <div className={`sidebar-hidden-content ${isCollapsed ? 'collapsed' : ''}`}>
-          <div className="sidebar-footer">
-            <div className="sidebar-footer-content">
-              <p className="font-medium">Market Status</p>
-              <p>Markets are open</p>
-              <p className="text-xxs">Closes in 3h 45m</p>
-            </div>
-          </div>
-        </div>
       </div>
     </aside>
   );

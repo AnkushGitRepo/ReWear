@@ -54,7 +54,7 @@ export function Navbar() {
             <Search className="navbar-search-icon" />
             <input 
               type="search" 
-              placeholder="Search stocks, indices..." 
+              placeholder="Search shirts, tees, and more..." 
               className="navbar-search-input"
             />
           </div>

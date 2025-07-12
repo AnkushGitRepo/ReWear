@@ -6,12 +6,6 @@ import Auth from "./pages/Auth";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import OtpVerification from "./pages/OtpVerification";
-import Markets from "./pages/Markets";
-import Currencies from "./pages/Currencies";
-import Global from "./pages/Global";
-import Portfolio from "./pages/Portfolio";
-import Performance from "./pages/Performance";
-import Analysis from "./pages/Analysis";
 import Settings from "./pages/Settings";
 import ItemListing from "./pages/ItemListing";
 import Layout from "./layout/Layout";
@@ -51,12 +45,6 @@ const App = () => {
         <Route path="/password/reset/:token" element={<ResetPassword />} />
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/markets" element={<Markets />} />
-          <Route path="/currencies" element={<Currencies />} />
-          <Route path="/global" element={<Global />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/performance" element={<Performance />} />
-          <Route path="/analysis" element={<Analysis />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/list-item" element={<ItemListing />} />
           <Route path="/profile" element={<UserDashboard />} />
