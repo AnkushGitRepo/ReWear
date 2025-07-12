@@ -83,6 +83,10 @@ export function Navbar() {
                   </Link>
                 ) : (
                   <>
+                    <Link to="/profile" className="dropdown-item" onClick={() => setIsDropdownOpen(false)}>
+                      <User className="dropdown-icon" />
+                      Profile
+                    </Link>
                     <Link to="/settings" className="dropdown-item" onClick={() => setIsDropdownOpen(false)}>
                       <Settings className="dropdown-icon" />
                       Settings

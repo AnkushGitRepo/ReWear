@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -19,50 +19,49 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { Context } from "./main";
+import UserDashboard from "./pages/UserDashboard";
 
 const App = () => {
   const { setIsAuthenticated, setUser } = useContext(Context);
+  const location = useLocation();
 
   useEffect(() => {
     const getUser = async () => {
-      await axios
-        .get("http://localhost:4000/api/v1/user/me", { withCredentials: true })
-        .then((res) => {
-          setUser(res.data.user);
-          setIsAuthenticated(true);
-        })
-        .catch((err) => {
-          setUser(null);
-          setIsAuthenticated(false);
+      try {
+        const res = await axios.get("http://localhost:4000/api/v1/user/me", {
+          withCredentials: true,
         });
+        setUser(res.data.user);
+        setIsAuthenticated(true);
+      } catch (error) {
+        setUser(null);
+        setIsAuthenticated(false);
+      }
     };
     getUser();
-  }, []);
+  }, [location.pathname]);
 
   return (
     <>
-      <Router>
-        <Routes>
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/otp-verification" element={<OtpVerification />} />
-          <Route path="/password/forgot" element={<ForgotPassword />} />
-          <Route path="/password/reset/:token" element={<ResetPassword />} />
-          <Route element={<Layout />}>
-            <Route path="/" element={<Home />} />
-            
-            
-            <Route path="/markets" element={<Markets />} />
-            <Route path="/currencies" element={<Currencies />} />
-            <Route path="/global" element={<Global />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/performance" element={<Performance />} />
-            <Route path="/analysis" element={<Analysis />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/list-item" element={<ItemListing />} />
-          </Route>
-        </Routes>
-        <ToastContainer theme="colored" />
-      </Router>
+      <Routes>
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/otp-verification" element={<OtpVerification />} />
+        <Route path="/password/forgot" element={<ForgotPassword />} />
+        <Route path="/password/reset/:token" element={<ResetPassword />} />
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/markets" element={<Markets />} />
+          <Route path="/currencies" element={<Currencies />} />
+          <Route path="/global" element={<Global />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/performance" element={<Performance />} />
+          <Route path="/analysis" element={<Analysis />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/list-item" element={<ItemListing />} />
+          <Route path="/profile" element={<UserDashboard />} />
+        </Route>
+      </Routes>
+      <ToastContainer theme="colored" />
     </>
   );
 };
