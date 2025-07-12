@@ -8,6 +8,27 @@ import crypto from "crypto";
 import cloudinary from "cloudinary";
 import DataUriParser from "datauri/parser.js";
 import { config } from "dotenv";
+import { Item } from '../models/itemModel.js';
+import { Swap } from '../models/swapModel.js'; // You must create this if not present
+
+export const getUserDashboard = async (req, res) => {
+  const user = await User.findById(req.user.id).select('-password');
+  res.status(200).json({ success: true, user });
+};
+
+export const getUserUploadedItems = async (req, res) => {
+  const items = await Item.find({ user: req.user.id });
+  res.status(200).json({ success: true, items });
+};
+
+export const getUserSwaps = async (req, res) => {
+  const swaps = await Swap.find({
+    $or: [{ 'from.user': req.user.id }, { 'to.user': req.user.id }],
+  }).populate('from.user', 'name email').populate('to.user', 'name email');
+  
+  res.status(200).json({ success: true, swaps });
+};
+
 
 config();
 

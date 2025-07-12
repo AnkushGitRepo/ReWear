@@ -7,6 +7,20 @@ import DataUriParser from "datauri/parser.js";
 
 import { User } from "../models/userModel.js";
 
+export const getItemById = async (req, res) => {
+  try {
+    const item = await Item.findById(req.params.id).populate("user", "firstName lastName email");
+    if (!item) {
+      return res.status(404).json({ success: false, message: "Item not found" });
+    }
+    res.status(200).json({ success: true, item });
+  } catch (error) {
+    console.error("getItemById error:", error);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+};
+
+
 export const createItem = catchAsyncError(async (req, res, next) => {
   const { title, description, category, type, size, condition, tags } = req.body;
 

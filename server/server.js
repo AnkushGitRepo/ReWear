@@ -3,8 +3,11 @@ import { connection } from "./database/dbConnection.js";
 import { config } from "dotenv";
 import cors from "cors";
 import itemRoutes from './routes/itemRouter.js';
+import userRoutes from './routes/userRouter.js';
 
-app.use("/api/v1", itemRoutes);
+app.use('/api/v1/user', userRoutes);
+
+app.use("/api/v1/item", itemRoutes);
 
 
 app.use(cors({
