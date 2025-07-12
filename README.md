@@ -1,23 +1,40 @@
-# Financial Dashboard
+# ReWear – Community Clothing Exchange
 
-This project is a full-stack web application built with the MERN (MongoDB, Express.js, React, Node.js) stack. It provides a robust user authentication system with email and phone (Twilio) based OTP verification, and a newly integrated Indian Stock Market Dashboard.
+## Overview
+
+Develop ReWear, a web-based platform that enables users to exchange unused clothing through direct swaps or a point-based redemption system. The goal is to promote sustainable fashion and reduce textile waste by encouraging users to reuse wearable garments instead of discarding them.
 
 ## Features
 
 ### User Authentication
-- **User Registration**: Allows new users to sign up with name, email, phone, and password.
-- **User Login**: Secure login for registered users.
-- **OTP Verification**: Supports both email and phone (via Twilio) for one-time password verification during registration.
-- **Forgot Password**: Functionality to reset password via email.
-- **Reset Password**: Secure password reset using a token sent to the user's email.
-- **Session Management**: Uses cookies for maintaining user sessions.
+- Email/password signup and login
+- OTP Verification (Email)
 
-### Indian Stock Market Dashboard
-- **NIFTY 50 Overview**: Displays current NIFTY 50 value and a trend line chart.
-- **SENSEX Overview**: Displays current SENSEX value and a trend line chart.
-- **Top Gainers**: Lists top performing stocks.
-- **Top Losers**: Lists worst performing stocks.
-- **Responsive Design**: The dashboard is designed to be responsive across different screen sizes.
+### Landing Page
+- Platform introduction
+- Calls-to-action: “Start Swapping”, “Browse Items”, “List an Item”
+- Featured items carousel
+
+### User Dashboard
+- Profile details and points balance
+- Uploaded items overview
+- Ongoing and completed swaps list
+
+### Item Detail Page
+- Image gallery and full item description
+- Uploader info
+- Options: “Swap Request” or “Redeem via Points”
+- Item availability status
+
+### Add New Item Page
+- Upload images
+- Enter title, description, category, type, size, condition, and tags
+- Submit to list item
+
+### Admin Role
+- Moderate and approve/reject item listings
+- Remove inappropriate or spam items
+- Lightweight admin panel for oversight
 
 ## Technologies Used
 
@@ -27,7 +44,6 @@ This project is a full-stack web application built with the MERN (MongoDB, Expre
 - **React Hook Form**: For efficient and flexible form validation.
 - **Axios**: Promise-based HTTP client for making API requests.
 - **React Toastify**: For displaying toast notifications.
-- **Recharts**: A composable charting library built on React components.
 - **CSS**: For styling and layout.
 
 ### Backend (Server)
@@ -41,34 +57,32 @@ This project is a full-stack web application built with the MERN (MongoDB, Expre
 - **cors**: Middleware for enabling Cross-Origin Resource Sharing.
 - **dotenv**: To load environment variables from a `.env` file.
 - **nodemailer**: For sending emails (e.g., OTP, password reset).
-- **twilio**: For sending SMS messages (e.g., OTP via phone call).
-- **node-cron**: For scheduling tasks (e.g., removing unverified accounts).
+- **cloudinary**: For image storage and management.
 
 ## Project Structure
 
 ```
-financial-dashboard/
+ReWear/
 ├── client/                 # Frontend React application
 │   ├── public/
 │   ├── src/
 │   │   ├── assets/
-│   │   ├── components/     # Reusable React components (e.g., Login, Register)
+│   │   ├── components/     # Reusable React components
 │   │   ├── layout/
-│   │   ├── pages/          # Page-level React components (e.g., Home, Auth, StockDashboard)
+│   │   ├── pages/          # Page-level React components
 │   │   ├── styles/         # CSS files
 │   │   ├── App.css
 │   │   ├── App.jsx         # Main React application component and routing
 │   │   └── main.jsx        # Entry point for the React application
 │   └── package.json        # Frontend dependencies
 ├── server/                 # Backend Node.js/Express application
-│   ├── automation/         # Scheduled tasks (e.g., remove unverified accounts)
 │   ├── config.env          # Environment variables for the server
-│   ├── controllers/        # Logic for handling API requests (e.g., userController)
+│   ├── controllers/        # Logic for handling API requests
 │   ├── database/           # Database connection setup
-│   ├── middlewares/        # Express middleware (e.g., error handling, authentication)
-│   ├── models/             # Mongoose schemas (e.g., userModel)
-│   ├── routes/             # API routes (e.g., userRouter)
-│   ├── utils/              # Utility functions (e.g., sendEmail, sendToken)
+│   ├── middlewares/        # Express middleware
+│   ├── models/             # Mongoose schemas
+│   ├── routes/             # API routes
+│   ├── utils/              # Utility functions
 │   ├── app.js              # Express application setup
 │   ├── server.js           # Server entry point
 │   └── package.json        # Backend dependencies
@@ -81,14 +95,10 @@ financial-dashboard/
 
 To set up and run this project, please refer to the [Setup and Installation Guide](SETUP.md).
 
-## Development Notes
-
-For specific instructions and conventions related to developing with the Gemini CLI agent, please refer to [GEMINI.md](GEMINI.md).
-
 ## Usage
 
 1.  **Access the Application**: Open your web browser and navigate to `http://localhost:5173`.
-2.  **Register**: Click on the "Register" tab. Fill in your details, including a valid Indian phone number (starting with 6, 7, 8, or 9 and 10 digits long). Select your preferred verification method (Email or Phone).
-3.  **Verify OTP**: After registration, you will be redirected to an OTP verification page. Enter the OTP received via email or phone.
+2.  **Register**: Sign up with your email and password.
+3.  **Verify OTP**: After registration, you will be redirected to an OTP verification page. Enter the OTP received via email.
 4.  **Login**: Once verified, you can log in using your registered email and password.
-5.  **Access Dashboard**: After logging in, you can navigate to the Indian Stock Market Dashboard by going to `http://localhost:5173/dashboard`.
+5.  **Explore**: Browse items, list your own, or initiate swaps.

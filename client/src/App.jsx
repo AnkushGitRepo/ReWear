@@ -15,6 +15,7 @@ import Portfolio from "./pages/Portfolio";
 import Performance from "./pages/Performance";
 import Analysis from "./pages/Analysis";
 import Settings from "./pages/Settings";
+import ItemListing from "./pages/ItemListing";
 import Layout from "./layout/Layout";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -59,6 +60,7 @@ const App = () => {
             <Route path="/performance" element={<Performance />} />
             <Route path="/analysis" element={<Analysis />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/list-item" element={<ItemListing />} />
           </Route>
         </Routes>
         <ToastContainer theme="colored" />

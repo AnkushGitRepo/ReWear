@@ -49,7 +49,7 @@ export function Navbar() {
     <header className="navbar">
       <div className="navbar-container">
         <div className="navbar-left">
-          <h1 className="navbar-title">MarketMitra</h1>
+          <h1 className="navbar-title">ReWear</h1>
           <div className="navbar-search">
             <Search className="navbar-search-icon" />
             <input 

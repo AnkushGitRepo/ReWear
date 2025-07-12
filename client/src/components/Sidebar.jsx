@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { 
   BarChart, PieChart, BarChart3, Wallet, LineChart, Globe, 
-  DollarSign, Settings, ChevronRight, ChevronLeft, Home, LogIn, LogOut
+  DollarSign, Settings, ChevronRight, ChevronLeft, Home, LogIn, LogOut, PlusSquare
 } from 'lucide-react';
 import '../styles/Sidebar.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -23,6 +23,7 @@ export function Sidebar({ isCollapsed, onToggle }) {
     { title: 'Portfolio', icon: Wallet, href: '/portfolio' },
     { title: 'Performance', icon: LineChart, href: '/performance' },
     { title: 'Analysis', icon: PieChart, href: '/analysis' },
+    { title: 'List Item', icon: PlusSquare, href: '/list-item' },
   ];
 
   const settingsItem = { title: 'Settings', icon: Settings, href: '/settings' };
@@ -47,7 +48,7 @@ export function Sidebar({ isCollapsed, onToggle }) {
     <aside className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
       <div className="sidebar-header">
         <h2 className={`sidebar-title ${isCollapsed ? 'collapsed' : ''}`}>
-          MarketMitra
+          ReWear
         </h2>
         <button onClick={onToggle} className="sidebar-toggle">
           {isCollapsed ? <ChevronRight /> : <ChevronLeft />}

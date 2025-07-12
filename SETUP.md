@@ -1,16 +1,16 @@
 # Project Setup Guide
 
-This guide will walk you through the steps to set up and run the financial dashboard project on your local machine.
+This guide will walk you through the steps to set up and run the ReWear project on your local machine.
 
 ## 1. Clone the Repository
 
 First, clone the project repository from GitHub:
 
 ```bash
-git clone https://github.com/AnkushGitRepo/Financial-Dashboard.git
-cd financial-dashboard
+git clone <Your_ReWear_Repo_URL>
+cd ReWear
 ```
-Replace `https://github.com/AnkushGitRepo/Financial-Dashboard.git` with the actual URL of your GitHub repository.
+Replace `<Your_ReWear_Repo_URL>` with the actual URL of your GitHub repository.
 
 ## 2. Backend Setup (Node.js)
 
@@ -43,9 +43,6 @@ COOKIE_EXPIRE=7
 CLOUDINARY_CLOUD_NAME=<Your_Cloudinary_Cloud_Name>
 CLOUDINARY_API_KEY=<Your_Cloudinary_API_Key>
 CLOUDINARY_API_SECRET=<Your_Cloudinary_API_Secret>
-TWILIO_ACCOUNT_SID=<Your_Twilio_Account_SID>
-TWILIO_AUTH_TOKEN=<Your_Twilio_Auth_Token>
-TWILIO_PHONE_NUMBER=<Your_Twilio_Phone_Number>
 SMPT_SERVICE=<Your_SMTP_Service> # e.g., gmail
 SMPT_MAIL=<Your_SMTP_Email>
 SMPT_PASSWORD=<Your_SMTP_Password>
@@ -89,4 +86,4 @@ The frontend development server should now be running, typically on `http://loca
 
 ## 4. Access the Application
 
-Open your web browser and navigate to `http://localhost:5173` to access the financial dashboard application.
+Open your web browser and navigate to `http://localhost:5173` to access the ReWear application.
