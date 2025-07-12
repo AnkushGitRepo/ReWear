@@ -20,6 +20,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { Context } from "./main";
 import UserDashboard from "./pages/UserDashboard";
+import ItemDetail from "./pages/ItemDetail";
 
 const App = () => {
   const { setIsAuthenticated, setUser } = useContext(Context);
@@ -59,6 +60,7 @@ const App = () => {
           <Route path="/settings" element={<Settings />} />
           <Route path="/list-item" element={<ItemListing />} />
           <Route path="/profile" element={<UserDashboard />} />
+          <Route path='/item' element={<ItemDetail/>} />
         </Route>
       </Routes>
       <ToastContainer theme="colored" />
