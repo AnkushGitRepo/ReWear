@@ -1,7 +1,25 @@
+.hero-carousel .swiper-button-next, .hero-carousel .swiper-button-prev {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.hero-carousel .swiper-button-next:hover, .hero-carousel .swiper-button-prev:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.hero-carousel .swiper-button-next::after, .hero-carousel .swiper-button-prev::after {
+  font-size: 24px;
+  font-weight: 600;
+}
+
 .hero-carousel {
   position: relative;
   width: 100%;
-  max-height: 500px;
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -21,33 +39,42 @@
 .hero-text {
   position: absolute;
   top: 50%;
-  left: 10%;
-  transform: translateY(-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: white;
-  max-width: 500px;
+  max-width: 600px;
+  text-align: center;
+  padding: 20px;
 }
 
 
 .hero-text h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
 }
+
+.hero-text p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
 .cta-button {
-  margin-top: 1.5rem; /* instead of 10rem */
-  padding: 12px 28px;
+  margin-top: 1.5rem;
+  padding: 15px 35px;
   background-color: #01bf71;
   color: white;
   border: none;
-  font-size: 1rem;
-  border-radius: 8px;
+  font-size: 1.1rem;
+  border-radius: 50px;
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-weight: 500;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .cta-button:hover {
   background-color: #019e60;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
