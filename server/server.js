@@ -1,6 +1,13 @@
 import { app } from "./app.js";
 import { connection } from "./database/dbConnection.js";
 import { config } from "dotenv";
+import cors from "cors";
+
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true
+}));
+
 
 config({ path: "./config.env" });
 
